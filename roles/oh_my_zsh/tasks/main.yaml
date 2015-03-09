@@ -1,0 +1,7 @@
+- name: Download installer
+  get_url:
+    url=https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    dest=/tmp/oh_my_zsh_installer.sh
+    mode=0755
+- name: Install oh_my_zsh
+  shell: /tmp/oh_my_zsh_installer.sh

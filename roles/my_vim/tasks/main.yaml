@@ -1,0 +1,10 @@
+---
+  - file: path="{{ ansible_env.HOME }}/.vim/custom" state=directory
+  - template: src="autocmds.vim" dest="{{ ansible_env.HOME }}/.vim/custom/autocmds.vim" mode=644
+  - template: src="functions.vim" dest="{{ ansible_env.HOME }}/.vim/custom/functions.vim" mode=644
+  - template: src="mappings.vim" dest="{{ ansible_env.HOME }}/.vim/custom/mappings.vim" mode=644
+  - template: src="plugins.vim" dest="{{ ansible_env.HOME }}/.vim/custom/plugins.vim" mode=644
+  - template: src="settings_after.vim" dest="{{ ansible_env.HOME }}/.vim/custom/settings_after.vim" mode=644
+  - template: src="settings_before.vim" dest="{{ ansible_env.HOME }}/.vim/custom/settings_before.vim" mode=644
+
+  - template: src=".vimrc" dest="{{ ansible_env.HOME }}/.vimrc" mode=644

@@ -1,0 +1,3 @@
+---
+- name: Download vundle
+  git: repo=ssh://git@github.com/gmarik/Vundle.vim.git dest="{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim" accept_hostkey=yes

@@ -1,0 +1,12 @@
+---
+- copy: src=get_powerline_install_path.sh dest=/tmp/get_powerline_install_path.sh mode=755
+
+- name: Get powerline isntall path
+  shell: /tmp/get_powerline_install_path.sh
+  register: get_powerline_install_path_output
+
+- name: Use oh-my-zsh plugins
+  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="plugins=(git)" state=present
+
+- name: Use powerline-status
+  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line=". {{ get_powerline_install_path_output.stdout_lines[0] }}/bindings/zsh/powerline.zsh"

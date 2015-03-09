@@ -1,0 +1,4 @@
+---
+- apt: pkg=git state=latest
+  sudo: yes
+  sudo_pass: "{{ sudo_pass }}"

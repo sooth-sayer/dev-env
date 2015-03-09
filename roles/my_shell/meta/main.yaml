@@ -1,0 +1,5 @@
+---
+dependencies:
+  - { role: oh_my_zsh }
+  - { role: powerline }
+  - { role: git }
