@@ -2,4 +2,4 @@
   git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest="{{ ansible_env.HOME }}/.oh-my-zsh"
 
 - name: Copy zshrc template
-  copy: src="{{ ansible_env.HOME }}/.oh_my_zsh/templates/zsh.zsh-template" dest="{{ ansible_env.HOME }}/.zshrc"
+  copy: src="{{ ansible_env.HOME }}/.oh-my-zsh/templates/zshrc.zsh-template" dest="{{ ansible_env.HOME }}/.zshrc"
