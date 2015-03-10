@@ -2,3 +2,7 @@
 - apt: pkg=git state=latest
   sudo: yes
   sudo_pass: "{{ sudo_pass }}"
+  when: ansible_os_family == "Debian"
+
+- homebrew: name=git state=latest
+  when: ansible_os_family == "Darwin"

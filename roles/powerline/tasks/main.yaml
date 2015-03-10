@@ -1,13 +1,17 @@
 ---
-- name: Ensure pip is installed
+- name: Ensure pip is installed (for Linux family)
   apt: pkg=python-pip state=latest
   sudo: true
   sudo_pass: "{{ sudo_pass }}"
+  when: ansible_os_family == "Debian"
+
 - name: Install powerline-status
   pip: name=powerline-status
   sudo: true
   sudo_pass: "{{ sudo_pass }}"
+
 - name: Clone patched fonts repo
   git: repo=ssh://git@github.com/powerline/fonts.git dest="{{ patched_fonts_path }}" accept_hostkey=yes 
+
 - name: Install patched fonts
   shell: "{{ patched_fonts_path }}/install.sh"

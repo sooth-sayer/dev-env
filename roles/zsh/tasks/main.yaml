@@ -1,5 +1,10 @@
 ---
-- name: Install zsh
+- name: Install zsh (linux)
   apt: pkg=zsh state=latest
   sudo: yes
   sudo_pass: "{{ sudo_pass }}"
+  when: ansible_os_family == "Debian"
+
+- name: Install zsh (mac)
+  homebrew: name=zsh state=latest
+  when: ansible_os_family == "Darwin"

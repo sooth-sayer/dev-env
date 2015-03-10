@@ -1,3 +1,10 @@
 ---
-- name: Install vim
+- name: Install vim (linux)
   apt: pkg=vim state=latest
+  sudo: yes
+  sudo_pass: "{{ sudo_pass }}"
+  when: ansible_os_family == "Debian"
+
+- name: Install vim (mac)
+  homebrew: name=vim state=latest
+  when: ansible_os_family == "Darwin"
