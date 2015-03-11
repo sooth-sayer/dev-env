@@ -8,16 +8,6 @@ nnoremap <silent> <Leader><Leader>lt :call NumberToggle()<cr>
 nmap <leader>z :MBEToggle<CR>
 nmap <leader>q :NERDTreeToggle<CR>
 
-" Ycm completer goto definition
-nnoremap <leader>dd :YcmCompleter GoTo<CR>
-
-" Tern def
-nnoremap <leader>td :TernDef<CR>
-nnoremap <leader>tdoc :TernDoc<CR>
-nnoremap <leader>tt :TernType<CR>
-nnoremap <leader>tr :TernRefs<CR>
-nnoremap <leader>trn :TernRename<CR>
-
 " Tabs
 nnoremap <ESC>1 :tabn 1<CR>
 nnoremap <ESC>2 :tabn 2<CR>
@@ -28,27 +18,58 @@ nnoremap <ESC>6 :tabn 6<CR>
 nnoremap <ESC>7 :tabn 7<CR>
 nnoremap <ESC>8 :tabn 8<CR>
 
+" Ycm completer goto definition
+func! SetYcmCompleterGoTo()
+  if !exists("g:YcmCompleterGoToIsSet")
+    let g:YcmCompleterGoToIsSet = 1
+    nnoremap <leader>dd :YcmCompleter GoTo<CR>
+  endif
+endfunction
+
+" Java eclim
+func! SetJavaEclimMapping()
+  if !exists("g:JavaEclimMappingIsSet")
+    let g:JavaEclimMappingIsSet = 1
+    nnoremap <leader>dd :JavaSearchContext<CR>
+  endif
+endfunction
+
+" Tern
+func! SetTernMapping()
+  if !exists("g:TernMappingIsSet")
+    let g:TernMappingIsSet = 1
+    nnoremap <leader>td :TernDef<CR>
+    nnoremap <leader>tdoc :TernDoc<CR>
+    nnoremap <leader>tt :TernType<CR>
+    nnoremap <leader>tr :TernRefs<CR>
+    nnoremap <leader>trn :TernRename<CR>
+  endif
+endfunction
+
 " lldb
 func! SetLLDBMapping()
-  " Mac OS hack for M-s
-  let g:lldb_map_Lstep = "ß"
-  nnoremap <leader>ds :Lstep<CR>
-  let g:lldb_map_Lbreakpoint = "<leader>db"
-  " Mac OS hack for M-c
-  let g:lldb_map_Lcontinue = "ç"
-  nnoremap <leader>dc :Lcontinue<CR>
-  " Mac OS hack for M-n
-  let g:lldb_map_Lnext = "˜"
-  nnoremap <leader>dn :Lnext<CR>
-  let g:lldb_map_Lstart = "<leader><leader>dst"
+  if !exists("g:LLDBMappingIsSet")
+    let g:LLDBMappingIsSet = 1
+    " Mac OS hack for M-s
+    let g:lldb_map_Lstep = "ß"
+    nnoremap <leader>ds :Lstep<CR>
+    let g:lldb_map_Lbreakpoint = "<leader>db"
+    " Mac OS hack for M-c
+    let g:lldb_map_Lcontinue = "ç"
+    nnoremap <leader>dc :Lcontinue<CR>
+    " Mac OS hack for M-n
+    let g:lldb_map_Lnext = "˜"
+    nnoremap <leader>dn :Lnext<CR>
+    let g:lldb_map_Lstart = "<leader><leader>dst"
 
-  nnoremap <leader><leader>dsl :Lshow locals<CR>
-  nnoremap <leader><leader>dsb :Lshow backtrace<CR>
+    nnoremap <leader><leader>dsl :Lshow locals<CR>
+    nnoremap <leader><leader>dsb :Lshow backtrace<CR>
 
-  nnoremap <leader><leader>dhl :Lhide locals<CR>
-  nnoremap <leader><leader>dhb :Lhide backtrace<CR>
-  nnoremap <leader><leader>dhbr :Lhide breakpoints<CR>
-  nnoremap <leader><leader>dht :Lhide threads<CR>
-  nnoremap <leader><leader>dhd :Lhide disassembly<CR>
-  nnoremap <leader><leader>dhr :Lhide registers<CR>
+    nnoremap <leader><leader>dhl :Lhide locals<CR>
+    nnoremap <leader><leader>dhb :Lhide backtrace<CR>
+    nnoremap <leader><leader>dhbr :Lhide breakpoints<CR>
+    nnoremap <leader><leader>dht :Lhide threads<CR>
+    nnoremap <leader><leader>dhd :Lhide disassembly<CR>
+    nnoremap <leader><leader>dhr :Lhide registers<CR>
+  endif
 endfunction

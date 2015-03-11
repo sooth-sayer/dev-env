@@ -1,0 +1,10 @@
+---
+languages:
+  - name: cpp
+    definitions:
+      - .vimrc
+      - .ycm_extra_conf.py
+
+  - name: java
+    definitions:
+      - .vimrc

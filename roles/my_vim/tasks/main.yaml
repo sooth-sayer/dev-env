@@ -8,3 +8,11 @@
   - template: src="settings_before.vim" dest="{{ ansible_env.HOME }}/.vim/custom/settings_before.vim" mode=644
 
   - template: src=".vimrc" dest="{{ ansible_env.HOME }}/.vimrc" mode=644
+
+  - file: path="{{ ansible_env.HOME }}/.vim/custom/projects_definitions" state=directory
+  - file: path="{{ ansible_env.HOME }}/.vim/custom/projects_definitions/{{ item.name }}" state=directory
+    with_items: languages
+  - template: src="projects_definitions/{{ item.0.name }}/{{ item.1 }}" dest="{{ ansible_env.HOME }}/.vim/custom/projects_definitions/{{ item.0.name }}/{{ item.1 }}" mode=644
+    with_subelements:
+      - languages
+      - definitions
