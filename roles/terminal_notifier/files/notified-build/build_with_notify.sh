@@ -4,7 +4,7 @@ self_dir_path=$(dirname $0)
 
 project_path=$1
 project_build_cmd=$2
-title=$3
+title="$3 - $(date +%H:%M:%S)"
 build_log_path=$4
 
 message="Started"
