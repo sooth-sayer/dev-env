@@ -12,10 +12,10 @@
 - file: path="{{ ansible_env.HOME }}/stuff/notifier/notified-build" state=directory
   when: ansible_os_family=="Darwin"
 
-- copy: src="notify-shell-script.sh" dest="{{ ansible_env.HOME }}/stuff/notifier/notify-shell-script.sh" mode=644
+- copy: src="notify-shell-script.sh" dest="{{ ansible_env.HOME }}/stuff/notifier/notify-shell-script.sh" mode=755
   when: ansible_os_family=="Darwin"
 
-- copy: src="{{ item }}" dest="{{ ansible_env.HOME }}/stuff/notifier/notified-build/" mode=644
+- copy: src="{{ item }}" dest="{{ ansible_env.HOME }}/stuff/notifier/notified-build/" mode=755
   with_fileglob:
     - notified-build/*
   when: ansible_os_family=="Darwin"
