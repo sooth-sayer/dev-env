@@ -1,0 +1,4 @@
+---
+- hosts: dev
+  roles:
+    - terminal_notifier
