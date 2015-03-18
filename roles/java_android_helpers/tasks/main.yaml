@@ -1,0 +1,4 @@
+---
+- copy: src="{{ item }}" dest="{{ ansible_env.HOME }}/stuff/java/scripts/" mode=755
+  with_fileglob:
+    - "*"
