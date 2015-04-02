@@ -23,3 +23,4 @@ set smarttab
 set expandtab
 set hlsearch
 set laststatus=2
+set backspace=2
