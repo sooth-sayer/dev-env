@@ -4,6 +4,9 @@ nnoremap <silent> <Leader><Leader>tw :call TrimWhiteSpace()<CR>
 " Toggle line numbering (Relative/Absolute)
 nnoremap <silent> <Leader><Leader>lt :call NumberToggle()<cr>
 
+" Close quickfix window
+nnoremap <leader>c :ccl<CR>
+
 " Browsing toggle
 nmap <leader>z :MBEToggle<CR>
 nmap <leader>q :NERDTreeToggle<CR>
