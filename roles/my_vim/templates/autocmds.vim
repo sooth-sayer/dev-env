@@ -8,5 +8,5 @@ autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
 
 " Autoclose autocompletion preview
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif

@@ -10,6 +10,9 @@ let NERDTreeWinSize = 30
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='murmur'
+
+let g:ycm_autoclose_preview_window_after_completion = 1
+
 " Color scheme
 " colorscheme Tomorrow-Night-Bright
 colorscheme solarized
