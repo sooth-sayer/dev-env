@@ -1,0 +1,2 @@
+---
+  - template: src=".gitconfig" dest="{{ ansible_env.HOME }}/.gitconfig" mode=644

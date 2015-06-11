@@ -3,3 +3,5 @@
   roles:
     - my_shell
     - my_vim
+    - my_git
+    - java_android_helpers
