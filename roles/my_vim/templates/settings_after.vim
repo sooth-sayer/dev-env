@@ -13,6 +13,8 @@ let g:airline_theme='murmur'
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
 " Color scheme
 " colorscheme Tomorrow-Night-Bright
 colorscheme solarized
