@@ -11,7 +11,7 @@
   sudo_pass: "{{ sudo_pass }}"
 
 - name: Clone patched fonts repo
-  git: repo=ssh://git@github.com/powerline/fonts.git dest="{{ patched_fonts_path }}" accept_hostkey=yes 
+  git: repo=git://github.com/powerline/fonts.git dest="{{ patched_fonts_path }}" accept_hostkey=yes
 
 - name: Install patched fonts
   shell: "{{ patched_fonts_path }}/install.sh"
