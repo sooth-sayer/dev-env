@@ -1,0 +1,9 @@
+---
+- name: Install tmux (linux)
+  apt: pkg=tmux state=latest
+  become: yes
+  when: ansible_os_family == "Debian"
+
+- name: Install tmux (mac)
+  homebrew: name=tmux state=latest
+  when: ansible_os_family == "Darwin"

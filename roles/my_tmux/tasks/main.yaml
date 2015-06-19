@@ -1,0 +1,15 @@
+---
+- name: Install psutil (Mac OS only)
+  pip: name=psutil version=2.2.1
+  become: yes
+  when: ansible_os_family == "Darwin"
+
+- template: src=".tmux.conf" dest="{{ ansible_env.HOME }}/.tmux.conf" mode=644
+- copy: src=get_powerline_install_path.sh dest=/tmp/get_powerline_install_path.sh mode=755
+
+- name: Get powerline isntall path
+  shell: /tmp/get_powerline_install_path.sh
+  register: get_powerline_install_path_output
+
+- name: Use powerline-status
+  lineinfile: dest="{{ ansible_env.HOME }}/.tmux.conf" line="source {{ get_powerline_install_path_output.stdout_lines[0] }}/bindings/tmux/powerline.conf"

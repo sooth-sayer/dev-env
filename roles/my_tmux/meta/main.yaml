@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: tmux }
+  - { role: powerline }
