@@ -1,3 +1,6 @@
+" Leader
+let mapleader=","
+
 " Trim white spaces
 nnoremap <silent> <Leader><Leader>tw :call TrimWhiteSpace()<CR>
 
@@ -20,6 +23,12 @@ nnoremap <ESC>5 :tabn 5<CR>
 nnoremap <ESC>6 :tabn 6<CR>
 nnoremap <ESC>7 :tabn 7<CR>
 nnoremap <ESC>8 :tabn 8<CR>
+
+" Windows selecting
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
 
 " Ycm completer goto definition
 func! SetYcmCompleterGoTo()
