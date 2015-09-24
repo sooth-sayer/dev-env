@@ -42,7 +42,7 @@ endfunction
 func! SetJavaEclimMapping()
   if !exists("g:JavaEclimMappingIsSet")
     let g:JavaEclimMappingIsSet = 1
-    nnoremap <leader>dd :JavaSearchContext<CR>
+    autocmd FileType java nnoremap <buffer> <leader>dd :JavaSearchContext<CR>
   endif
 endfunction
 
