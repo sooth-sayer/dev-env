@@ -12,6 +12,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='murmur'
 
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_filetype_blacklist = { 'ruby': 1 }
 
 " Disable autosave
 " let g:auto_save = 1
