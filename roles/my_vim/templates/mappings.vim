@@ -24,6 +24,9 @@ nnoremap <ESC>6 :tabn 6<CR>
 nnoremap <ESC>7 :tabn 7<CR>
 nnoremap <ESC>8 :tabn 8<CR>
 
+nnoremap <leader><leader>> :lnext<CR>
+nnoremap <leader><leader>< :lprev<CR>
+
 " Windows selecting
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
@@ -85,3 +88,4 @@ func! SetLLDBMapping()
     nnoremap <leader><leader>dhr :Lhide registers<CR>
   endif
 endfunction
+
