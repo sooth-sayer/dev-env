@@ -13,6 +13,7 @@ nnoremap <leader>c :ccl<CR>
 " Browsing toggle
 nmap <leader>z :MBEToggle<CR>
 nmap <leader>q :NERDTreeToggle<CR>
+nmap <leader>nf :NERDTreeFind<CR>
 
 " Tabs
 nnoremap <ESC>1 :tabn 1<CR>
