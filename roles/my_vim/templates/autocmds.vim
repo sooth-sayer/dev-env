@@ -12,3 +12,8 @@ autocmd QuickFixCmdPost *grep* cwindow
 " Autoclose autocompletion preview
 " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+augroup quickfix
+  autocmd!
+  autocmd FileType qf setlocal nowrap
+augroup END
