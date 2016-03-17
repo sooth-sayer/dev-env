@@ -2,6 +2,8 @@
 set t_Co=256
 " Toggle relative line numbering by default
 set relativenumber
+" Toggle number for hybrid mode
+set number
 " Toggle wrap lines
 set wrap
 " NERDTree options
@@ -22,6 +24,7 @@ let g:syntastic_always_populate_loc_list = 1
 
 " Color scheme
 " colorscheme Tomorrow-Night-Bright
+set background=dark
 colorscheme solarized
 
 " Syntax highlighting
