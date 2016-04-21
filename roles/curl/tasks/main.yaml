@@ -1,8 +1,7 @@
 ---
 - name: Install curl (linux)
   apt: pkg=curl state=latest
-  sudo: yes
-  sudo_pass: "{{ sudo_pass }}"
+  become: yes
   when: ansible_os_family == "Debian"
 
 - name: Install curl (mac)

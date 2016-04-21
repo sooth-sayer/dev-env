@@ -1,8 +1,8 @@
 ---
 - name: Ensure pip is installed (for Linux family)
   apt: pkg=python-pip state=latest
-  sudo: true
-  sudo_pass: "{{ sudo_pass }}"
+  become: true
+  become_method: "sudo"
   when: ansible_os_family == "Debian"
 
 - name: Install powerline-status

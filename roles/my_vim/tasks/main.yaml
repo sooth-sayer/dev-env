@@ -11,8 +11,8 @@
 
   - file: path="{{ ansible_env.HOME }}/.vim/custom/projects_definitions" state=directory
   - file: path="{{ ansible_env.HOME }}/.vim/custom/projects_definitions/{{ item.name }}" state=directory
-    with_items: languages
+    with_items: "{{ languages }}"
   - template: src="projects_definitions/{{ item.0.name }}/{{ item.1 }}" dest="{{ ansible_env.HOME }}/.vim/custom/projects_definitions/{{ item.0.name }}/{{ item.1 }}" mode=644
     with_subelements:
-      - languages
+      - "{{ languages }}"
       - definitions
