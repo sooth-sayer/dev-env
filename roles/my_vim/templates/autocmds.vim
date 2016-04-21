@@ -17,3 +17,5 @@ augroup quickfix
   autocmd!
   autocmd FileType qf setlocal nowrap
 augroup END
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
