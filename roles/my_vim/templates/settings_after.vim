@@ -40,6 +40,3 @@ set backspace=2
 
 " Vim-go
 let g:go_fmt_autosave = 0
-
-" Vim-android gradle auto-sync
-let g:vim_android_gradle_autosync = 1
