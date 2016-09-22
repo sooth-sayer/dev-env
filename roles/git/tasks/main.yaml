@@ -5,3 +5,4 @@
 
 - homebrew: name=git state=latest
   when: ansible_os_family == "Darwin"
+  become: false

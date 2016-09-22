@@ -7,3 +7,4 @@
 - name: Install curl (mac)
   homebrew: name=curl state=latest update_homebrew=yes
   when: ansible_os_family == "Darwin"
+  become: false

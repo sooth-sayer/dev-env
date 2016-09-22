@@ -5,10 +5,11 @@
   become_method: "sudo"
   when: ansible_os_family == "Debian"
 
-- name: Install powerline-status
-  pip: name=powerline-status
-  become: true
-  become_method: "sudo"
+- copy: src=install_powerline_darwin.sh dest=/tmp/install_powerline_darwin.sh mode=755
+  when: ansible_os_family == "Darwin"
+
+- name: Install powerline (for Darwin family)
+  shell: /tmp/install_powerline_darwin.sh
 
 - name: Clone patched fonts repo
   git: repo=git://github.com/powerline/fonts.git dest="{{ patched_fonts_path }}" accept_hostkey=yes

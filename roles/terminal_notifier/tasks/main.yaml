@@ -2,6 +2,7 @@
 - name: Install terminal-notifier (mac)
   homebrew: name="terminal-notifier" state=latest
   when: ansible_os_family=="Darwin"
+  become: false
 
 - file: path="{{ ansible_env.HOME }}/stuff" state=directory
   when: ansible_os_family=="Darwin"

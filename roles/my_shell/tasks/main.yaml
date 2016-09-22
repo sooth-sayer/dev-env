@@ -1,4 +1,8 @@
 ---
+- name: Add user installed pip packages folder to PATH
+  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="export PATH=$PATH:$HOME/Library/Python/2.7/bin"
+  when: ansible_os_family == "Darwin"
+
 - copy: src=get_powerline_install_path.sh dest=/tmp/get_powerline_install_path.sh mode=755
 
 - name: Get powerline isntall path
@@ -16,3 +20,4 @@
 
 - name: History incremental search backward
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="bindkey \"^R\" history-incremental-search-backward"
+

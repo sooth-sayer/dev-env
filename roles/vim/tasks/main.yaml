@@ -7,3 +7,4 @@
 - name: Install vim (mac)
   homebrew: name=vim state=latest
   when: ansible_os_family == "Darwin"
+  become: false

@@ -7,3 +7,4 @@
 - name: Install zsh (mac)
   homebrew: name=zsh state=latest
   when: ansible_os_family == "Darwin"
+  become: false
