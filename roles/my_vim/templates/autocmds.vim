@@ -19,3 +19,4 @@ augroup quickfix
 augroup END
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType javascript setlocal foldmethod=syntax

@@ -40,3 +40,6 @@ set backspace=2
 
 " Vim-go
 let g:go_fmt_autosave = 0
+
+" Foldings
+set foldlevelstart=99
