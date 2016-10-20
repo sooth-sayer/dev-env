@@ -1,4 +1,5 @@
 #!/bin/bash
 
+self_path=$(dirname $0)
 project_path=$1
-$HOME/tools/android-sdk/platform-tools/adb -s $ANDROID_DEVICE install -r $project_path/app/build/outputs/apk/app-debug.apk
+$ANDROID_SDK/platform-tools/./adb -s $($self_path/get-first-device.sh) install -r $project_path/app/build/outputs/apk/app-debug.apk
