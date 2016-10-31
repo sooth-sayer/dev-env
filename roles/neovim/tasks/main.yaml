@@ -1,0 +1,39 @@
+---
+- name: python3 neovim (mac)
+  pip: name=neovim executable=pip3
+  become: false
+  when: ansible_os_family == "Darwin"
+
+- name: python3 neovim (linux)
+  pip: name=neovim executable=pip3
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: Install neovim (mac)
+  homebrew: name=neovim state=latest
+  when: ansible_os_family == "Darwin"
+  become: false
+
+- name: Install software-properties-common (Ubuntu)
+  apt: pkg=software-properties-common state=latest
+  become: true
+  when: ansible_distribution == "Ubuntu"
+
+- name: Add neovim apt repo (Ubuntu)
+  shell: add-apt-repository ppa:neovim-ppa/unstable && apt-get update
+  become: true
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install neovim (linux)
+  apt: pkg=neovim state=latest
+  become: yes
+  when: ansible_os_family == "Debian"
+
+- name: Create config dir
+  file: path="{{ ansible_env.HOME }}/.config" state=directory
+
+- name: link vim config dir
+  file: src="{{ ansible_env.HOME }}/.vim" dest="{{ ansible_env.HOME }}/.config/nvim" state=link
+
+- name: link vimrc
+  file: src="{{ ansible_env.HOME }}/.vimrc" dest="{{ ansible_env.HOME }}/.config/nvim/init.vim" state=link
