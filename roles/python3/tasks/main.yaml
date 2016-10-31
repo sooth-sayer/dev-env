@@ -14,11 +14,6 @@
   become: yes
   when: ansible_os_family == "Debian"
 
-- name: Install pip3 (mac)
-  homebrew: name=python3-pip state=latest
-  when: ansible_os_family == "Darwin"
-  become: false
-
 - name: Upgrade pip
   shell: pip3 install -U pip
 

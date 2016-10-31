@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pip install --user powerline-status
+pip3 install --user powerline-status

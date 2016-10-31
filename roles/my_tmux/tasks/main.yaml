@@ -1,7 +1,7 @@
 ---
 - name: Install psutil (Mac OS only)
   pip: name=psutil version=2.2.1
-  become: yes
+  become: no
   when: ansible_os_family == "Darwin"
 
 - template: src=".tmux.conf" dest="{{ ansible_env.HOME }}/.tmux.conf" mode=644

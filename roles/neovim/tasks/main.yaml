@@ -10,7 +10,7 @@
   when: ansible_os_family == "Debian"
 
 - name: Install neovim (mac)
-  homebrew: name=neovim state=latest
+  homebrew: name=neovim/neovim/neovim state=latest
   when: ansible_os_family == "Darwin"
   become: false
 
