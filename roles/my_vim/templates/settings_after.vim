@@ -16,6 +16,8 @@ let g:airline_theme='murmur'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_filetype_blacklist = { 'ruby': 1 }
 
+let g:jsx_ext_required = 0
+
 " Disable autosave
 " let g:auto_save = 1
 " let g:auto_save_in_insert_mode = 0
