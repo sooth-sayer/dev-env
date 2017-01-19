@@ -30,3 +30,9 @@ function! g:RunShellCommand(cmdline)
   setlocal nomodifiable
   1
 endfunction
+
+function! g:SaveIfChanged()
+  if &modified
+    write
+  endif
+endfunction
