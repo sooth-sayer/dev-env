@@ -18,7 +18,7 @@ augroup quickfix
   autocmd FileType qf setlocal nowrap
 augroup END
 
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java :call deoplete#enable()
 autocmd FileType javascript setlocal foldmethod=syntax
 autocmd! BufWritePost *.js Neomake
 
