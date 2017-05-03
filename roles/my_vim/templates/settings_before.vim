@@ -5,3 +5,4 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/custom/.ycm_extra_conf.py"
 let NERDTreeShowLineNumbers=1
 let g:move_key_modifier = 'C'
 let g:ackprg = 'ag --vimgrep'
+let g:flow#enable = 0

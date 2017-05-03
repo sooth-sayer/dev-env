@@ -18,6 +18,9 @@ let g:ycm_filetype_blacklist = { 'ruby': 1 }
 
 let g:jsx_ext_required = 0
 
+let g:javascript_plugin_flow = 1
+let g:flow#autoclose = 1
+
 " Disable autosave
 " let g:auto_save = 1
 " let g:auto_save_in_insert_mode = 0
@@ -43,3 +46,6 @@ let g:go_fmt_autosave = 0
 
 " Foldings
 set foldlevelstart=99
+
+" Mouse
+set mouse-=a
