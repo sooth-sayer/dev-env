@@ -41,6 +41,8 @@ set hlsearch
 set laststatus=2
 set backspace=2
 
+set autowrite
+
 " Vim-go
 let g:go_fmt_autosave = 0
 
