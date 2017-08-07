@@ -23,6 +23,7 @@ autocmd FileType javascript setlocal foldmethod=syntax
 autocmd! BufWritePost *.js Neomake
 autocmd! BufWritePost *.jsx Neomake
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd! BufWritePost *.go Neomake
 
 augroup autos
   au!
