@@ -34,6 +34,9 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
+" Put paste
+nmap <leader>p :pu<CR>
+
 " Ycm completer goto definition
 func! SetYcmCompleterGoTo()
   if !exists("g:YcmCompleterGoToIsSet")
