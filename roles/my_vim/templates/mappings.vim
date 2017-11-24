@@ -37,34 +37,6 @@ map <C-h> <C-w><Left>
 " Put paste
 nmap <leader>p :pu<CR>
 
-" Ycm completer goto definition
-func! SetYcmCompleterGoTo()
-  if !exists("g:YcmCompleterGoToIsSet")
-    let g:YcmCompleterGoToIsSet = 1
-    nnoremap <leader>dd :YcmCompleter GoTo<CR>
-  endif
-endfunction
-
-" Java eclim
-func! SetJavaEclimMapping()
-  if !exists("g:JavaEclimMappingIsSet")
-    let g:JavaEclimMappingIsSet = 1
-    autocmd FileType java nnoremap <buffer> <leader>dd :JavaSearchContext<CR>
-  endif
-endfunction
-
-" Tern
-func! SetTernMapping()
-  if !exists("g:TernMappingIsSet")
-    let g:TernMappingIsSet = 1
-    nnoremap <leader>td :TernDef<CR>
-    nnoremap <leader>tdoc :TernDoc<CR>
-    nnoremap <leader>tt :TernType<CR>
-    nnoremap <leader>tr :TernRefs<CR>
-    nnoremap <leader>trn :TernRename<CR>
-  endif
-endfunction
-
 " lldb
 func! SetLLDBMapping()
   if !exists("g:LLDBMappingIsSet")
