@@ -25,7 +25,6 @@ Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'fatih/vim-go'
 Plugin 'slim-template/vim-slim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'neomake/neomake'
 Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plugin 'udalov/kotlin-vim'
