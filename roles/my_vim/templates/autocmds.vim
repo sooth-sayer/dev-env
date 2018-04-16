@@ -27,6 +27,12 @@ autocmd! BufWritePost *.js Neomake
 autocmd! BufWritePost *.jsx Neomake
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd! BufWritePost *.go Neomake
+autocmd! BufWritePost *.rb Neomake
+
+autocmd FileType c :call deoplete#enable()
+autocmd FileType cpp :call deoplete#enable()
+autocmd FileType hpp :call deoplete#enable()
+autocmd FileType h :call deoplete#enable()
 
 augroup autos
   au!

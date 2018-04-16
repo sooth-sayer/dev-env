@@ -5,21 +5,13 @@ set relativenumber
 " Toggle number for hybrid mode
 set number
 " Toggle wrap lines
-set wrap
+set nowrap
 " NERDTree options
 let NERDTreeWinSize = 30
 " AirLine
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='murmur'
-
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_filetype_blacklist = { 'ruby': 1 }
-
-let g:jsx_ext_required = 0
-
-let g:javascript_plugin_flow = 1
-let g:flow#autoclose = 1
 
 " Disable autosave
 " let g:auto_save = 1
@@ -43,11 +35,11 @@ set backspace=2
 
 set autowrite
 
-" Vim-go
-let g:go_fmt_autosave = 0
-
 " Foldings
 set foldlevelstart=99
 
 " Mouse
-set mouse-=a
+set mouse=a
+
+" Fix file saving
+:set backupcopy=yes

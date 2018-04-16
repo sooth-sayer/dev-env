@@ -15,16 +15,6 @@ nmap <leader>z :MBEToggle<CR>
 nmap <leader>q :NERDTreeToggle<CR>
 nmap <leader>nf :NERDTreeFind<CR>
 
-" Tabs
-nnoremap <ESC>1 :tabn 1<CR>
-nnoremap <ESC>2 :tabn 2<CR>
-nnoremap <ESC>3 :tabn 3<CR>
-nnoremap <ESC>4 :tabn 4<CR>
-nnoremap <ESC>5 :tabn 5<CR>
-nnoremap <ESC>6 :tabn 6<CR>
-nnoremap <ESC>7 :tabn 7<CR>
-nnoremap <ESC>8 :tabn 8<CR>
-
 nnoremap <leader><leader>> :lnext<CR>
 nnoremap <leader><leader>< :lprev<CR>
 nnoremap <leader><leader>>> :cnext<CR>
@@ -68,3 +58,18 @@ func! SetLLDBMapping()
   endif
 endfunction
 
+func! FineSearchReg()
+  let reg = getreg('/')
+  return substitute(reg, '^\\<\(.*\)\\>$', '\1', '' )
+endfunction
+
+nmap <leader><leader>A :execute "Ack" fnameescape(FineSearchReg())<CR>
+
+nmap <leader><leader>cs :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <leader><leader>cg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <leader><leader>cc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <leader><leader>ct :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <leader><leader>ce :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <leader><leader>cf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <leader><leader>ci :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <leader><leader>cd :cs find d <C-R>=expand("<cword>")<CR><CR>
