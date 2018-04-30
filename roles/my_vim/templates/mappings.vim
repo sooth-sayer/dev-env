@@ -63,13 +63,5 @@ func! FineSearchReg()
   return substitute(reg, '^\\<\(.*\)\\>$', '\1', '' )
 endfunction
 
-nmap <leader><leader>A :execute "Ack" fnameescape(FineSearchReg())<CR>
-
-nmap <leader><leader>cs :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <leader><leader>cg :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <leader><leader>cc :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <leader><leader>ct :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <leader><leader>ce :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <leader><leader>cf :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <leader><leader>ci :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <leader><leader>cd :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <leader><leader>A/ :execute "Ack" fnameescape(FineSearchReg())<CR>
+nmap <leader><leader>Aw :execute "Ack" "<C-R>=expand("<cword>")<CR>"<CR>
