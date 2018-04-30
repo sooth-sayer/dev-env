@@ -1,9 +1,0 @@
-" Set completer
-let g:EclimCompletionMethod = "omnifunc"
-
-" Set Eclim mappings
-:call SetYcmCompleterGoTo()
-:call SetJavaEclimMapping()
-
-" Run
-nnoremap <leader><leader>run :!ndk-build && ~/stuff/java/scripts/run.sh ./ "com.restream.viewrightplayer/com.restream.viewrightplayer.MainActivity"<CR>
