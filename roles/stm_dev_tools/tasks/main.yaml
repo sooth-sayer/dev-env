@@ -1,0 +1,39 @@
+- name: Download tools
+  get_url:
+    url: "https://developer.arm.com/-/media/Files/downloads/gnu-rm/7-2017q4/{{ package.version_code }}-mac.tar.bz2?revision=7f453378-b2c3-4c0d-8eab-e7d5db8ea32e?product=GNU%20Arm%20Embedded%20Toolchain,64-bit,,Mac%20OS%20X,7-2017-q4-major"
+    dest: /tmp/gcc-arm-none-eabi.tar.bz2
+  when: ansible_os_family == "Darwin"
+
+- file: path="{{ ansible_env.HOME }}/dev" state=directory
+  when: ansible_os_family == "Darwin"
+
+- file: path="{{ ansible_env.HOME }}/dev/tools" state=directory
+  when: ansible_os_family == "Darwin"
+
+- name: Unarchive
+  unarchive:
+    src: /tmp/gcc-arm-none-eabi.tar.bz2
+    dest: "{{ dev_tools_path }}"
+  when: ansible_os_family == "Darwin"
+
+- name: Move dirs
+  shell: "mv -n {{ package.version_code }} gcc-arm-none-eabi"
+  args:
+    chdir: "{{ dev_tools_path }}"
+
+- template: src=set-gcc-arm-tools.sh dest="{{ ansible_env.HOME }}/bin/set-gcc-arm-tools.sh" mode=755
+
+- name: CXX
+  lineinfile: dest="{{ ansible_env.HOME }}/bin/set-gcc-arm-tools.sh" line="export CXX={{ dev_tools_path }}/gcc-arm-none-eabi/bin/arm-none-eabi-g++"
+
+- name: C
+  lineinfile: dest="{{ ansible_env.HOME }}/bin/set-gcc-arm-tools.sh" line="export C={{ dev_tools_path }}/gcc-arm-none-eabi/bin/arm-none-eabi-gcc"
+
+- name: AS
+  lineinfile: dest="{{ ansible_env.HOME }}/bin/set-gcc-arm-tools.sh" line="export AS={{ dev_tools_path }}/gcc-arm-none-eabi/bin/arm-none-eabi-as"
+
+- name: SIZE
+  lineinfile: dest="{{ ansible_env.HOME }}/bin/set-gcc-arm-tools.sh" line="export SIZE={{ dev_tools_path }}/gcc-arm-none-eabi/bin/arm-none-eabi-size"
+
+- name: OBJ_COPY
+  lineinfile: dest="{{ ansible_env.HOME }}/bin/set-gcc-arm-tools.sh" line="export OBJ_COPY={{ dev_tools_path }}/gcc-arm-none-eabi/bin/arm-none-eabi-objcopy"

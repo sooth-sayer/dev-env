@@ -1,0 +1,4 @@
+---
+- hosts: dev
+  roles:
+    - stm_dev_tools
