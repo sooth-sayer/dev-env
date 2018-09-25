@@ -43,3 +43,10 @@ set mouse=a
 
 " Fix file saving
 :set backupcopy=yes
+
+let g:buffergator_sort_regime = 'mru'
+let g:buffergator_viewport_split_policy = "B"
+let g:buffergator_split_size = 10
+
+" Use gitignore for ctrlp
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
