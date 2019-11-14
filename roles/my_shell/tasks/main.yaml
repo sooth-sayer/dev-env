@@ -15,6 +15,9 @@
 - name: Use powerline-status
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line=". {{ get_powerline_install_path_output.stdout_lines[0] }}/bindings/zsh/powerline.zsh"
 
+- name: Fix local user path
+  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="export PATH=$PATH:$HOME/.local/bin" insertbefore="bindings\/zsh\/powerline"
+
 - name: Use vi mode
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="bindkey -v"
 

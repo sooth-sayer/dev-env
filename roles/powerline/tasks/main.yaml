@@ -7,7 +7,7 @@
   when: ansible_os_family == "Darwin"
 
 - name: Install powerline (for Debian)
-  pip: name=neovim executable=pip3
+  pip: name=powerline-status executable=pip3
   become: false
   when: ansible_os_family == "Debian"
 

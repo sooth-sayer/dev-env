@@ -1,6 +1,7 @@
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ervandew/supertab'
 Plugin 'elzr/vim-json'
@@ -39,3 +40,5 @@ Plugin 'rdnetto/YCM-Generator'
 Plugin 'critiqjo/lldb.nvim'
 " Go
 Plugin 'fatih/vim-go'
+Plugin 'mdempsky/gocode'
+Plugin 'vim-scripts/Tabmerge'

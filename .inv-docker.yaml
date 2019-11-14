@@ -1,0 +1,4 @@
+---
+dev:
+  vars:
+    ansible_connection: docker

@@ -6,6 +6,7 @@
   - template: src="plugins.vim" dest="{{ ansible_env.HOME }}/.vim/custom/plugins.vim" mode=644
   - template: src="settings_after.vim" dest="{{ ansible_env.HOME }}/.vim/custom/settings_after.vim" mode=644
   - template: src="settings_before.vim" dest="{{ ansible_env.HOME }}/.vim/custom/settings_before.vim" mode=644
+  - template: src="file_types.vim" dest="{{ ansible_env.HOME }}/.vim/custom/file_types.vim" mode=644
 
   - template: src=".vimrc" dest="{{ ansible_env.HOME }}/.vimrc" mode=644
 

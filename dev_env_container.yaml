@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  roles:
+    - sudo
+    - my_shell
+    - my_vim
+    - my_git
+    - my_tmux
+    - neovim

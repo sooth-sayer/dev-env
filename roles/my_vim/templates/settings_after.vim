@@ -39,7 +39,8 @@ set autowrite
 set foldlevelstart=99
 
 " Mouse
-set mouse=a
+set mouse=nv
+
 
 " Fix file saving
 :set backupcopy=yes
