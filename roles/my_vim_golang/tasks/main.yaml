@@ -1,0 +1,10 @@
+---
+- name: Create plugins directory
+  file: path="{{ ansible_env.HOME }}/.vim/custom/plugins" state=directory
+
+- name: Add golang plugins
+  template: src="plugins/go_plugins.vim" dest="{{ ansible_env.HOME }}/.vim/custom/plugins/go_plugins.vim" mode=644
+
+- name: Include plugins definition
+  lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/plugins.vim" line="source {{ ansible_env.HOME }}/.vim/custom/plugins/go_plugins.vim"
+

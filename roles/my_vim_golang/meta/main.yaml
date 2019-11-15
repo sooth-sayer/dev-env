@@ -1,0 +1,6 @@
+---
+dependencies:
+  - { role: vundle }
+  - { role: vim }
+  - { role: neovim }
+  - { role: my_vim }

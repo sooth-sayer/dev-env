@@ -38,7 +38,4 @@ Plugin 'kana/vim-textobj-user'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'critiqjo/lldb.nvim'
-" Go
-Plugin 'fatih/vim-go'
-Plugin 'mdempsky/gocode'
 Plugin 'vim-scripts/Tabmerge'
