@@ -23,19 +23,19 @@ Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'slim-template/vim-slim'
 Plugin 'neomake/neomake'
 Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plugin 'vim-scripts/Tabmerge'
 
 " Kotlin
 Plugin 'udalov/kotlin-vim'
+
 " JS
 Plugin 'flowtype/vim-flow'
-Plugin 'mxw/vim-jsx'
+Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'pangloss/vim-javascript'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
+
 " Ruby
 Plugin 'ngmy/vim-rubocop'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'kana/vim-textobj-user'
-" C++
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'critiqjo/lldb.nvim'
-Plugin 'vim-scripts/Tabmerge'

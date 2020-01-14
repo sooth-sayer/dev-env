@@ -1,11 +1,16 @@
 " Terminal colors
 set t_Co=256
+
 " Toggle relative line numbering by default
 set relativenumber
+
 " Toggle number for hybrid mode
 set number
+
 " Toggle wrap lines
-set nowrap
+" set nowrap
+set showbreak=…
+
 " NERDTree options
 let NERDTreeWinSize = 30
 " AirLine

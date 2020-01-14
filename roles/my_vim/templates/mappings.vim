@@ -67,6 +67,6 @@ nmap <leader><leader>A/ :execute "Ack!" fnameescape(FineSearchReg())<CR>
 nmap <leader><leader>Aw :execute "Ack!" "<C-R>=expand("<cword>")<CR>"<CR>
 nmap <leader><leader>tc :tabclose<CR>
 nmap <leader><leader>tmr :Tabmerge $ right<CR>
-nmap <leader><leader>p :pu<CR>
+nmap <leader>w :w<CR>
 
 nnoremap <leader><leader>pry obinding.pry<Esc>:w<CR>

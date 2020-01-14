@@ -22,13 +22,18 @@ augroup END
 autocmd FileType java :call deoplete#enable()
 autocmd FileType javascript setlocal foldmethod=syntax
 autocmd FileType javascript :call deoplete#enable()
-autocmd FileType ruby setlocal foldmethod=syntax
 
 autocmd! BufWritePost *.js Neomake
 autocmd! BufWritePost *.jsx Neomake
+autocmd! BufWritePost *.tsx Neomake
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd! BufWritePost *.go Neomake
+
+autocmd FileType ruby setlocal foldmethod=syntax
 autocmd! BufWritePost *.rb Neomake
+autocmd! BufWritePost *.rake Neomake
 
 autocmd FileType c :call deoplete#enable()
 autocmd FileType cpp :call deoplete#enable()
