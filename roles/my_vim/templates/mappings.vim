@@ -70,3 +70,4 @@ nmap <leader><leader>tmr :Tabmerge $ right<CR>
 nmap <leader>w :w<CR>
 
 nnoremap <leader><leader>pry obinding.pry<Esc>:w<CR>
+autocmd FileType typescript.tsx nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>

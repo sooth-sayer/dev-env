@@ -26,7 +26,9 @@ autocmd FileType javascript :call deoplete#enable()
 autocmd! BufWritePost *.js Neomake
 autocmd! BufWritePost *.jsx Neomake
 autocmd! BufWritePost *.tsx Neomake
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+autocmd! BufWritePost *.ts Neomake
+autocmd BufNewFile,BufRead *.js,*.ts,*.tsx,*.jsx set filetype=typescript.tsx
+autocmd FileType typescript.tsx :call deoplete#enable()
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd! BufWritePost *.go Neomake

@@ -29,11 +29,10 @@ Plugin 'vim-scripts/Tabmerge'
 Plugin 'udalov/kotlin-vim'
 
 " JS
-Plugin 'flowtype/vim-flow'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'pangloss/vim-javascript'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'Shougo/vimproc'
+Plugin 'Quramy/tsuquyomi'
 
 " Ruby
 Plugin 'ngmy/vim-rubocop'
