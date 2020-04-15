@@ -2,8 +2,10 @@
 - hosts: dev
   roles:
     - my_shell
-    - my_vim
     - my_git
     - my_tmux
-    - java_android_helpers
     - neovim
+    - my_vim_js
+    - my_vim_ruby
+    - my_vim_golang
+    - my_vim_kotlin
