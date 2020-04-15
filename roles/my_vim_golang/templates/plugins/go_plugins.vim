@@ -1,3 +1,3 @@
 " Go
-Plugin 'fatih/vim-go'
-Plugin 'mdempsky/gocode'
+Plug 'fatih/vim-go'
+Plug 'mdempsky/gocode'

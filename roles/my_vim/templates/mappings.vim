@@ -30,34 +30,6 @@ map <C-h> <C-w><Left>
 " Put paste
 nmap <leader>p :pu<CR>
 
-" lldb
-func! SetLLDBMapping()
-  if !exists("g:LLDBMappingIsSet")
-    let g:LLDBMappingIsSet = 1
-    " Mac OS hack for M-s
-    let g:lldb_map_Lstep = "ß"
-    nnoremap <leader>ds :Lstep<CR>
-    let g:lldb_map_Lbreakpoint = "<leader>db"
-    " Mac OS hack for M-c
-    let g:lldb_map_Lcontinue = "ç"
-    nnoremap <leader>dc :Lcontinue<CR>
-    " Mac OS hack for M-n
-    let g:lldb_map_Lnext = "˜"
-    nnoremap <leader>dn :Lnext<CR>
-    let g:lldb_map_Lstart = "<leader><leader>dst"
-
-    nnoremap <leader><leader>dsl :Lshow locals<CR>
-    nnoremap <leader><leader>dsb :Lshow backtrace<CR>
-
-    nnoremap <leader><leader>dhl :Lhide locals<CR>
-    nnoremap <leader><leader>dhb :Lhide backtrace<CR>
-    nnoremap <leader><leader>dhbr :Lhide breakpoints<CR>
-    nnoremap <leader><leader>dht :Lhide threads<CR>
-    nnoremap <leader><leader>dhd :Lhide disassembly<CR>
-    nnoremap <leader><leader>dhr :Lhide registers<CR>
-  endif
-endfunction
-
 func! FineSearchReg()
   let reg = getreg('/')
   return substitute(reg, '^\\<\(.*\)\\>$', '\1', '' )
@@ -66,8 +38,6 @@ endfunction
 nmap <leader><leader>A/ :execute "Ack!" fnameescape(FineSearchReg())<CR>
 nmap <leader><leader>Aw :execute "Ack!" "<C-R>=expand("<cword>")<CR>"<CR>
 nmap <leader><leader>tc :tabclose<CR>
+nmap <leader><leader>tn :tabnew<CR>
 nmap <leader><leader>tmr :Tabmerge $ right<CR>
 nmap <leader>w :w<CR>
-
-nnoremap <leader><leader>pry obinding.pry<Esc>:w<CR>
-autocmd FileType typescript.tsx nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>

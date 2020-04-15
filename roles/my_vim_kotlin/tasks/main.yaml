@@ -1,0 +1,44 @@
+---
+- name: Download kotlin-language-sever
+  git: repo=git@github.com:fwcd/kotlin-language-server.git dest="{{ ansible_env.HOME }}/dev/tools/kotlin-language-server" accept_hostkey=yes
+
+- name: Build kotlin language server
+  shell:
+    cmd: ./gradlew :server:installDist
+    chdir: "{{ ansible_env.HOME }}/dev/tools/kotlin-language-server"
+
+- name: Create plugins directory
+  file: path="{{ ansible_env.HOME }}/.vim/custom/plugins" state=directory
+
+- name: Add kotlin plugins
+  template: src="plugins/kotlin_plugins.vim" dest="{{ ansible_env.HOME }}/.vim/custom/plugins/kotlin_plugins.vim" mode=644
+
+- name: Include plugins definition
+  lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/plugins.vim" line="source {{ ansible_env.HOME }}/.vim/custom/plugins/kotlin_plugins.vim"
+
+- name: Add kotlin mappings
+  template: src="mappings/kotlin_mappings.vim" dest="{{ ansible_env.HOME }}/.vim/custom/mappings/kotlin_mappings.vim" mode=644
+
+- name: Include mappings definition
+  lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/mappings.vim" line="source {{ ansible_env.HOME }}/.vim/custom/mappings/kotlin_mappings.vim"
+
+- name: Check that the coc-settings exists
+  stat:
+    path: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
+  register: coc_settings_stat_result
+
+- name: Read coc-config
+  include_vars:
+    file: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
+    name: coc_settings
+  when: coc_settings_stat_result.stat.exists
+
+- name: Read kotlin language server settings
+  include_vars:
+    file: coc-settings.json
+    name: kotlin_coc_settings
+
+- name: Add kotlin language server settings
+  copy:
+    dest: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
+    content: "{{ coc_settings | default({}) | combine(kotlin_coc_settings, recursive=True) }}"
