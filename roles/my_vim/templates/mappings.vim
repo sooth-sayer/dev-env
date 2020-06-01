@@ -41,3 +41,4 @@ nmap <leader><leader>tc :tabclose<CR>
 nmap <leader><leader>tn :tabnew<CR>
 nmap <leader><leader>tmr :Tabmerge $ right<CR>
 nmap <leader>w :w<CR>
+nmap <leader>e :e!<CR>
