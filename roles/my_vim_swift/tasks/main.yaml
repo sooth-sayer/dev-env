@@ -1,0 +1,39 @@
+---
+- file: path="{{ ansible_env.HOME }}/dev/tools" state=directory
+
+- name: Download apple vim highlight plugin
+  git: repo=git://github.com/apple/swift.git dest="{{ ansible_env.HOME }}/dev/tools/swift" accept_hostkey=yes
+  when: ansible_os_family == "Darwin"
+
+- name: Create plugins directory
+  file: path="{{ ansible_env.HOME }}/.vim/custom/plugins" state=directory
+  when: ansible_os_family == "Darwin"
+
+- name: Add swift plugins
+  template: src="plugins/swift_plugins.vim" dest="{{ ansible_env.HOME }}/.vim/custom/plugins/swift_plugins.vim" mode=644
+  when: ansible_os_family == "Darwin"
+
+- name: Include plugins definition
+  lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/plugins.vim" line="source {{ ansible_env.HOME }}/.vim/custom/plugins/swift_plugins.vim"
+  when: ansible_os_family == "Darwin"
+
+- name: Check that the coc-settings exists
+  stat:
+    path: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
+  register: coc_settings_stat_result
+
+- name: Read coc-config
+  include_vars:
+    file: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
+    name: coc_settings
+  when: coc_settings_stat_result.stat.exists
+
+- name: Read swift language server settings
+  include_vars:
+    file: coc-settings.json
+    name: swift_coc_settings
+
+- name: Add swift language server settings
+  copy:
+    dest: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
+    content: "{{ coc_settings | default({}) | combine(swift_coc_settings, recursive=True) }}"

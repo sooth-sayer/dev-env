@@ -1,6 +1,6 @@
 ---
 - name: Install psutil (Mac OS only)
-  pip: name=psutil version=2.2.1
+  pip: name=psutil version=2.2.1 executable=pip3
   become: no
   when: ansible_os_family == "Darwin"
 

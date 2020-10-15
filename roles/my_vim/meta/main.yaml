@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - { role: vundle }
+  - { role: vim_plug }
   - { role: vim }

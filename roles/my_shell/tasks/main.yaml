@@ -17,15 +17,15 @@
 - name: Add user installed pip packages folder to PATH
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="export PATH=$PATH:{{ get_user_base_python_site_path_output.stdout_lines[0] }}/bin"
 
-- name: Use powerline-status
-  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line=". {{ get_powerline_install_path_output.stdout_lines[0] }}/bindings/zsh/powerline.zsh"
-
 - name: Fix local user path
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="export PATH=$PATH:$HOME/.local/bin" insertbefore="bindings\/zsh\/powerline"
 
 - name: Add usr local bin path
-  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="export PATH=/usr/local/bin:$PATH"
+  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="export PATH=/usr/local/bin:$PATH" insertbefore="bindings\/zsh\/powerline"
   when: ansible_os_family == "Darwin"
+
+- name: Use powerline-status
+  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line=". {{ get_powerline_install_path_output.stdout_lines[0] }}/bindings/zsh/powerline.zsh"
 
 - name: Use vi mode
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="bindkey -v"

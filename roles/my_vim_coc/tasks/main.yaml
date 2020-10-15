@@ -1,0 +1,15 @@
+---
+- name: Create plugins directory
+  file: path="{{ ansible_env.HOME }}/.vim/custom/plugins" state=directory
+
+- name: Add coc plugins
+  template: src="plugins/coc_plugins.vim" dest="{{ ansible_env.HOME }}/.vim/custom/plugins/coc_plugins.vim" mode=644
+
+- name: Include plugins definition
+  lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/plugins.vim" line="source {{ ansible_env.HOME }}/.vim/custom/plugins/coc_plugins.vim"
+
+- name: Add coc mappings
+  template: src="mappings/coc_mappings.vim" dest="{{ ansible_env.HOME }}/.vim/custom/mappings/coc_mappings.vim" mode=644
+
+- name: Include mappings definition
+  lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/mappings.vim" line="source {{ ansible_env.HOME }}/.vim/custom/mappings/coc_mappings.vim"
