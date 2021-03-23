@@ -5,8 +5,8 @@
     - my_git
     - my_tmux
     - neovim
+    - my_neovim
     - my_vim_js
     - my_vim_ruby
-    - my_vim_golang
     - my_vim_kotlin
     - my_vim_swift

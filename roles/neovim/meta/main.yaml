@@ -1,4 +1,3 @@
 ---
 dependencies:
   - { role: python3 }
-  - { role: my_vim }

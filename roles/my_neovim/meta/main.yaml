@@ -1,4 +1,4 @@
 ---
 dependencies:
   - { role: neovim }
-  - { role: curl }
+  - { role: vim_plug }

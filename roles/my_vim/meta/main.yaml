@@ -1,4 +1,3 @@
 ---
 dependencies:
-  - { role: vim_plug }
   - { role: vim }
