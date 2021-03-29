@@ -24,3 +24,5 @@ Plug 'slim-template/vim-slim'
 Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-scripts/Tabmerge'
+Plug 'stephpy/vim-yaml'
+Plug 'pedrohdz/vim-yaml-folds'
