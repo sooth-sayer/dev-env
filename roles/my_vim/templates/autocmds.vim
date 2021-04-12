@@ -15,12 +15,13 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 augroup quickfix
   autocmd!
-  autocmd FileType qf setlocal nowrap
+  autocmd FileType qf setlocal wrap
 augroup END
 
 " autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType java :call deoplete#enable()
 autocmd FileType javascript setlocal foldmethod=syntax
+autocmd FileType typescript.tsx setlocal foldmethod=syntax
 autocmd FileType javascript :call deoplete#enable()
 
 autocmd! BufWritePost *.js Neomake

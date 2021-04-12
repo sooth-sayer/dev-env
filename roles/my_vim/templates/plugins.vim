@@ -11,7 +11,6 @@ Plug 'Shougo/vimshell.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'godlygeek/tabular'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'tpope/vim-commentary'
 Plug 'matze/vim-move'
@@ -26,3 +25,5 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-scripts/Tabmerge'
 Plug 'stephpy/vim-yaml'
 Plug 'pedrohdz/vim-yaml-folds'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
