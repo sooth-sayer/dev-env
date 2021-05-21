@@ -43,3 +43,5 @@ nmap <leader><leader>tmr :Tabmerge $ right<CR>
 nmap <leader>w :w<CR>
 nmap <leader>e :e!<CR>
 nmap <C-p> :Files<CR>
+nmap <leader><C-b> :Lines<CR>
+nmap <leader><C-p> :Ag<CR>
