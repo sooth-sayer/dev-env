@@ -17,6 +17,14 @@
   lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/plugins.vim" line="source {{ ansible_env.HOME }}/.vim/custom/plugins/swift_plugins.vim"
   when: ansible_os_family == "Darwin"
 
+- name: Add swift mappings
+  template: src="mappings/swift_mappings.vim" dest="{{ ansible_env.HOME }}/.vim/custom/mappings/swift_mappings.vim" mode=644
+  when: ansible_os_family == "Darwin"
+
+- name: Include mappings definition
+  lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/mappings.vim" line="source {{ ansible_env.HOME }}/.vim/custom/mappings/swift_mappings.vim"
+  when: ansible_os_family == "Darwin"
+
 - name: Check that the coc-settings exists
   stat:
     path: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
