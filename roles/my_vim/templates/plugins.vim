@@ -27,3 +27,4 @@ Plug 'pedrohdz/vim-yaml-folds'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'bkad/CamelCaseMotion'

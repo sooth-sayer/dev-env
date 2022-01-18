@@ -40,8 +40,12 @@ nmap <leader><leader>Aw :execute "Ack!" "<C-R>=expand("<cword>")<CR>"<CR>
 nmap <leader><leader>tc :tabclose<CR>
 nmap <leader><leader>tn :tabnew<CR>
 nmap <leader><leader>tmr :Tabmerge $ right<CR>
-nmap <leader>w :w<CR>
-nmap <leader>e :e!<CR>
+nmap <leader><C-t> mA:tabnew<CR>'A
+
 nmap <leader><C-f> :Files<CR>
 nmap <leader><C-b> :Lines<CR>
 nmap <leader><C-p> :Ag<CR>
+
+nmap <leader><leader>w :w<CR>
+nmap <leader><leader>e :e!<CR>
+let g:camelcasemotion_key = '<leader>'
