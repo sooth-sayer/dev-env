@@ -4,4 +4,3 @@ let g:miniBufExplorerAutoStart = 0
 let NERDTreeShowLineNumbers=1
 let g:move_key_modifier = 'C'
 let g:ackprg = 'ag --vimgrep'
-let g:flow#enable = 0

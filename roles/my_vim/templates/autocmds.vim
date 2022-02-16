@@ -20,18 +20,21 @@ augroup END
 
 " autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType java :call deoplete#enable()
-autocmd FileType javascript setlocal foldmethod=syntax
-autocmd FileType typescript.tsx setlocal foldmethod=syntax
-autocmd FileType javascript :call deoplete#enable()
+autocmd FileType javascript,jsx setlocal foldmethod=syntax
+autocmd FileType typescript,tsx setlocal foldmethod=syntax
+autocmd FileType typescript,tsx,javascript,jsx :call deoplete#enable()
 
 autocmd! BufWritePost *.js Neomake
 autocmd! BufWritePost *.jsx Neomake
 autocmd! BufWritePost *.tsx Neomake
 autocmd! BufWritePost *.ts Neomake
-autocmd BufNewFile,BufRead *.js,*.ts,*.tsx,*.jsx set filetype=typescript.tsx
-autocmd FileType typescript.tsx :call deoplete#enable()
+autocmd BufNewFile,BufRead *.js set filetype=javascript
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+autocmd BufNewFile,BufRead *.ts set filetype=typescript
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *.swift setlocal noexpandtab tabstop=2 shiftwidth=2
 autocmd! BufWritePost *.go Neomake
 
 autocmd FileType ruby setlocal foldmethod=syntax

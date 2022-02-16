@@ -18,7 +18,6 @@ Plug 'flazz/vim-colorschemes'
 Plug 'mileszs/ack.vim'
 Plug '907th/vim-auto-save'
 Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'slim-template/vim-slim'
 Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-scripts/Tabmerge'
