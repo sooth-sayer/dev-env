@@ -12,7 +12,7 @@
   when: ansible_os_family == "Debian"
 
 - name: Clone patched fonts repo
-  git: repo=git://github.com/powerline/fonts.git dest="{{ patched_fonts_path }}" accept_hostkey=yes
+  git: repo=https://github.com/powerline/fonts.git dest="{{ patched_fonts_path }}" accept_hostkey=yes
 
 - name: Install patched fonts
   shell: "{{ patched_fonts_path }}/install.sh"

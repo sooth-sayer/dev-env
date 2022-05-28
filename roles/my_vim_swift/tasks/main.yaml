@@ -2,7 +2,7 @@
 - file: path="{{ ansible_env.HOME }}/dev/tools" state=directory
 
 - name: Download apple vim highlight plugin
-  git: repo=git://github.com/apple/swift.git dest="{{ ansible_env.HOME }}/dev/tools/swift" accept_hostkey=yes
+  git: repo=https://github.com/apple/swift.git dest="{{ ansible_env.HOME }}/dev/tools/swift" accept_hostkey=yes
   when: ansible_os_family == "Darwin"
 
 - name: Create plugins directory
