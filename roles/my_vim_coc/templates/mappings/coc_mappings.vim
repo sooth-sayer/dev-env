@@ -3,7 +3,9 @@ nmap <silent> <leader>dp <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>dn <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
-nmap <silent> <C-]> <Plug>(coc-definition)
+autocmd FileType *.kt nmap <silent> <C-]> <Plug>(coc-definition)
+autocmd FileType *.swift nmap <silent> <C-]> <Plug>(coc-definition)
+
 nmap <silent> <leader>td <Plug>(coc-type-definition)
 nmap <silent> <leader>i <Plug>(coc-implementation)
 nmap <silent> <leader>r <Plug>(coc-references)

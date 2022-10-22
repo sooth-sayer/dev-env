@@ -2,7 +2,7 @@
 - file: path="{{ ansible_env.HOME }}/dev/tools" state=directory
 
 - name: Download kotlin-language-sever
-  git: repo=git@github.com:fwcd/kotlin-language-server.git dest="{{ ansible_env.HOME }}/dev/tools/kotlin-language-server" accept_hostkey=yes
+  git: repo=https://github.com/fwcd/kotlin-language-server.git dest="{{ ansible_env.HOME }}/dev/tools/kotlin-language-server" accept_hostkey=yes
 
 - name: Build kotlin language server
   shell:
