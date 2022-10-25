@@ -1,2 +1,2 @@
 " Coc
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': [] }
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'for': ['swift', 'kt'] }
