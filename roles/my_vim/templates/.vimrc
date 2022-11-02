@@ -13,3 +13,5 @@ source ~/.vim/custom/autocmds.vim
 source ~/.vim/custom/mappings.vim
 source ~/.vim/custom/settings_after.vim
 source ~/.vim/custom/file_types.vim
+
+lua require("custom")

@@ -11,4 +11,9 @@
   - file: path="{{ ansible_env.HOME }}/.vim/custom/plugins" state=directory
   - file: path="{{ ansible_env.HOME }}/.vim/custom/mappings" state=directory
 
+  - file: path="{{ ansible_env.HOME }}/.vim/lua" state=directory
+  - file: path="{{ ansible_env.HOME }}/.vim/lua/custom" state=directory
+
+  - template: src="init.lua" dest="{{ ansible_env.HOME }}/.vim/lua/custom/init.lua" mode=644
+
   - template: src=".vimrc" dest="{{ ansible_env.HOME }}/.vimrc" mode=644
