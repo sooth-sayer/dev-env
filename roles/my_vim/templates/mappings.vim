@@ -13,7 +13,7 @@ nnoremap <leader>c :ccl<CR>
 " Browsing toggle
 nmap <leader>z :MBEToggle<CR>
 nmap <leader>q :NvimTreeToggle<CR>
-nmap <leader>nf :NvimTreeFind<CR>
+nmap <leader>nf :NvimTreeFindFile<CR>
 
 nnoremap <leader><leader>> :lnext<CR>
 nnoremap <leader><leader>< :lprev<CR>
