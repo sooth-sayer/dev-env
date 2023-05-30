@@ -4,11 +4,6 @@
   become: false
   when: ansible_os_family == "Darwin"
 
-- name: python3 neovim (linux)
-  pip: name=neovim executable=pip3
-  become: true
-  when: ansible_os_family == "Debian"
-
 - name: Install neovim (mac)
   homebrew: name=neovim/neovim/neovim state=latest
   when: ansible_os_family == "Darwin"
@@ -27,4 +22,9 @@
 - name: Install neovim (linux)
   apt: pkg=neovim state=latest
   become: yes
+  when: ansible_os_family == "Debian"
+
+- name: Install python3 neovim (linux)
+  apt: name=python3-neovim state=latest
+  become: true
   when: ansible_os_family == "Debian"

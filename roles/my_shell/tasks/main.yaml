@@ -11,6 +11,18 @@
   shell: /tmp/get_powerline_install_path.sh
   register: get_powerline_install_path_output
 
+- copy: src=get_pipx_powerline_install_path.sh dest=/tmp/get_pipx_powerline_install_path.sh mode=755
+
+- name: Check pipx
+  shell: pipx --version
+  ignore_errors: true
+  register: get_pipx_version
+
+- name: Get python user base path (pipx)
+  shell: /tmp/get_pipx_powerline_install_path.sh
+  register: get_pipx_powerline_install_path
+  when: ansible_os_family == "Debian" and get_pipx_version.rc == 0
+
 - name: Use oh-my-zsh plugins
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="plugins=(git)" state=present
 
@@ -26,6 +38,11 @@
 
 - name: Use powerline-status
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line=". {{ get_powerline_install_path_output.stdout_lines[0] }}/bindings/zsh/powerline.zsh"
+  when: get_pipx_version.rc != 0
+
+- name: Use powerline-status (pipx)
+  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line=". {{ get_pipx_powerline_install_path.stdout_lines[0] }}/bindings/zsh/powerline.zsh"
+  when: get_pipx_version.rc == 0
 
 - name: Use vi mode
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="bindkey -v"
