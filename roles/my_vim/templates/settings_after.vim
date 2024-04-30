@@ -56,3 +56,6 @@ let g:buffergator_split_size = 10
 
 " Use gitignore for ctrlp
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" Fix Floating window colors
+hi! link NormalFloat Normal
