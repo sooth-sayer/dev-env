@@ -1,0 +1,6 @@
+---
+dependencies:
+  - { role: curl }
+  - { role: vim_plug }
+  - { role: my_vim }
+  - { role: my_vim_coc }

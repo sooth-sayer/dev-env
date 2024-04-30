@@ -1,0 +1,52 @@
+---
+- name: Create plugins directory
+  file: path="{{ ansible_env.HOME }}/.vim/custom/plugins" state=directory
+
+- name: Add elixir plugins
+  template: src="plugins/elixir_plugins.vim" dest="{{ ansible_env.HOME }}/.vim/custom/plugins/elixir_plugins.vim" mode=644
+
+- name: Include plugins definition
+  lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/plugins.vim" line="source {{ ansible_env.HOME }}/.vim/custom/plugins/elixir_plugins.vim"
+
+- apt: pkg=jq state=latest
+  become: yes
+  when: ansible_os_family == "Debian"
+
+- homebrew: name=jq state=latest
+  when: ansible_os_family == "Darwin"
+  become: false
+
+- name: Get latest elixir-ls asset name
+  shell: curl -L -H "Accept{{':'}} application/vnd.github+json" -H "X-GitHub-Api-Version{{':'}} 2022-11-28" https://api.github.com/repos/elixir-lsp/elixir-ls/releases/latest | jq -r '.assets[0].name'
+  register: elixir_ls_asset_name
+
+- name: Get latest elixir-ls url
+  shell: curl -L -H "Accept{{':'}} application/vnd.github+json" -H "X-GitHub-Api-Version{{':'}} 2022-11-28" 'https://api.github.com/repos/elixir-lsp/elixir-ls/releases/latest' | jq -r '.assets[0].browser_download_url'
+  register: elixir_ls_asset_url
+
+- name: Download latest elixir-ls
+  shell: wget -P "{{ ansible_env.HOME }}/dev/tools/elixir-ls" "{{ elixir_ls_asset_url.stdout }}"
+
+- name: Unzip latest elixir-ls
+  unarchive: src="{{ ansible_env.HOME }}/dev/tools/elixir-ls/{{ elixir_ls_asset_name.stdout }}" dest="{{ ansible_env.HOME }}/dev/tools/elixir-ls" remote_src=yes
+
+- name: Check that the coc-settings exists
+  stat:
+    path: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
+  register: coc_settings_stat_result
+
+- name: Read coc-config
+  include_vars:
+    file: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
+    name: coc_settings
+  when: coc_settings_stat_result.stat.exists
+
+- name: Read elixir language server settings
+  include_vars:
+    file: coc-settings.json
+    name: elixir_coc_settings
+
+- name: Add elixir language server settings
+  copy:
+    dest: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
+    content: "{{ coc_settings | default({}) | combine(elixir_coc_settings, recursive=True) }}"
