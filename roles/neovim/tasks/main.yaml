@@ -1,11 +1,11 @@
 ---
 - name: python3 neovim (mac)
-  pip: name=neovim executable=pip3
+  pip: name=neovim executable=pip
   become: false
   when: ansible_os_family == "Darwin"
 
 - name: Install neovim (mac)
-  homebrew: name=neovim/neovim/neovim state=latest
+  homebrew: name=neovim state=latest
   when: ansible_os_family == "Darwin"
   become: false
 

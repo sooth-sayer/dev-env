@@ -18,11 +18,16 @@
   become: yes
   when: ansible_os_family == "Debian"
 
-- name: Upgrade pip
-  shell: pip3 install -U pip
-  when: ansible_os_family == "Darwin"
-
 - name: Install pipx (linux)
   apt: pkg=pipx state=latest
   become: yes
   when: ansible_os_family == "Debian"
+
+- name: Install pipx (mac)
+  homebrew: name=pipx state=latest
+  when: ansible_os_family == "Darwin"
+  become: false
+
+# - name: Upgrade pip
+#   shell: pip3 install -U pip
+#   when: ansible_os_family == "Darwin"
