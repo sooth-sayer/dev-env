@@ -1,2 +1,2 @@
 " Kotlin
-Plug 'udalov/kotlin-vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

@@ -29,12 +29,29 @@
     name: coc_settings
   when: coc_settings_stat_result.stat.exists
 
+- name: Render kotlin language server settings
+  template:
+    src: coc-settings.json.j2
+    dest: "{{ ansible_env.TMPDIR }}/coc-settings.json"
+    mode: '0644'
+
 - name: Read kotlin language server settings
   include_vars:
-    file: coc-settings.json
+    file: "{{ ansible_env.TMPDIR }}/coc-settings.json"
     name: kotlin_coc_settings
 
 - name: Add kotlin language server settings
   copy:
     dest: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
     content: "{{ coc_settings | default({}) | combine(kotlin_coc_settings, recursive=True) }}"
+
+- name: Render kotlin init script from template
+  template: src="init.lua" dest="{{ ansible_env.TMPDIR }}/kotlin_syntax_plugin_init.lua"
+
+- name: Append syntax plugin init script to init lua
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.vim/lua/custom/init.lua"
+    create: true
+    marker: "-- {mark} Kotlin syntax plugin init"
+    insertafter: EOF
+    content: "{{ lookup('file', ansible_env.TMPDIR + '/kotlin_syntax_plugin_init.lua') }}"
