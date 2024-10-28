@@ -4,6 +4,7 @@ nmap <silent> <leader>dn <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 autocmd FileType kt nmap <silent> <C-]> <Plug>(coc-definition)
+autocmd FileType kotlin nmap <silent> <C-]> <Plug>(coc-definition)
 autocmd FileType swift nmap <silent> <C-]> <Plug>(coc-definition)
 autocmd FileType elixir nmap <silent> <C-]> <Plug>(coc-definition)
 nmap <silent> <leader>td <Plug>(coc-type-definition)
@@ -30,6 +31,7 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold *.kt silent call CocActionAsync('highlight')
+autocmd CursorHold *.kotlin silent call CocActionAsync('highlight')
 autocmd CursorHold *.swift silent call CocActionAsync('highlight')
 autocmd CursorHold *.ex silent call CocActionAsync('highlight')
 autocmd CursorHold *.exs silent call CocActionAsync('highlight')
