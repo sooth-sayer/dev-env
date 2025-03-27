@@ -13,3 +13,9 @@
 
 - name: Include mappings definition
   lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/mappings.vim" line="source {{ ansible_env.HOME }}/.vim/custom/mappings/coc_mappings.vim"
+
+- name: Add coc autocmds
+  template: src="autocmds/coc_autocmds.vim" dest="{{ ansible_env.HOME }}/.vim/custom/autocmds/coc_autocmds.vim" mode=644
+
+- name: Include coc autocmds
+  lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/autocmds.vim" line="source {{ ansible_env.HOME }}/.vim/custom/autocmds/coc_autocmds.vim"
