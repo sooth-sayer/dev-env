@@ -59,3 +59,11 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 
 " Fix Floating window colors
 hi! link NormalFloat Normal
+
+" Copilot
+imap <silent><script><expr> <C-T> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+" SuperTab
+let g:SuperTabMappingForward = '<c-n>'
+let g:SuperTabMappingBackward = '<c-p>'

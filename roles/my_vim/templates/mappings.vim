@@ -48,4 +48,5 @@ nmap <leader><C-p> :Ag<CR>
 
 nmap <leader><leader>w :w<CR>
 nmap <leader><leader>e :e!<CR>
+
 let g:camelcasemotion_key = '<leader>'
