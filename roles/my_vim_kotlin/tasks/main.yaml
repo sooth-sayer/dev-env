@@ -18,6 +18,12 @@
 - name: Include plugins definition
   lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/plugins.vim" line="source {{ ansible_env.HOME }}/.vim/custom/plugins/kotlin_plugins.vim"
 
+- name: Add kotlin autocmds
+  template: src="autocmds/kotlin_autocmds.vim" dest="{{ ansible_env.HOME }}/.vim/custom/autocmds/kotlin_autocmds.vim" mode=644
+
+- name: Include kotlin autocmds
+  lineinfile: dest="{{ ansible_env.HOME }}/.vim/custom/autocmds.vim" line="source {{ ansible_env.HOME }}/.vim/custom/autocmds/kotlin_autocmds.vim"
+
 - name: Check that the coc-settings exists
   stat:
     path: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
