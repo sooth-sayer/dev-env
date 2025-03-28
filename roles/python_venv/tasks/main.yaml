@@ -1,0 +1,5 @@
+- name: Use python3 venv in zsh
+  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="source {{ ansible_env.HOME }}/python-dev-env/bin/activate"
+
+- name: Use python3 venv in bashrc
+  lineinfile: dest="{{ ansible_env.HOME }}/.bashrc" line="source {{ ansible_env.HOME }}/python-dev-env/bin/activate"

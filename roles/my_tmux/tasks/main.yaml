@@ -1,9 +1,4 @@
 ---
-- name: Install psutil (Mac OS only)
-  pip: name=psutil version=2.2.1 executable=pip3
-  become: no
-  when: ansible_os_family == "Darwin"
-
 - template: src=".tmux.conf" dest="{{ ansible_env.HOME }}/.tmux.conf" mode=644
 - copy: src=get_powerline_install_path.sh dest=/tmp/get_powerline_install_path.sh mode=755
 

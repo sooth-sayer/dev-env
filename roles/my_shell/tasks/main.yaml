@@ -23,6 +23,11 @@
   register: get_pipx_powerline_install_path
   when: ansible_os_family == "Debian" and get_pipx_version.rc == 0
 
+- name: Get python user base path (pipx) (darwin)
+  shell: /tmp/get_pipx_powerline_install_path.sh
+  register: get_pipx_powerline_install_path
+  when: ansible_os_family == "Darwin" and get_pipx_version.rc == 0
+
 - name: Use oh-my-zsh plugins
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="plugins=(git)" state=present
 
@@ -49,4 +54,3 @@
 
 - name: History incremental search backward
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="bindkey \"^R\" history-incremental-search-backward"
-

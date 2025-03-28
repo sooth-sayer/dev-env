@@ -4,9 +4,10 @@
 - name: Download kotlin-language-sever
   git: repo=https://github.com/fwcd/kotlin-language-server.git dest="{{ ansible_env.HOME }}/dev/tools/kotlin-language-server" accept_hostkey=yes
 
+# TODO: Get the current java version
 - name: Build kotlin language server
   shell:
-    cmd: ./gradlew :server:installDist
+    cmd: ./gradlew -PjavaVersion=17 :server:installDist
     chdir: "{{ ansible_env.HOME }}/dev/tools/kotlin-language-server"
 
 - name: Create plugins directory

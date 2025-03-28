@@ -1,5 +1,6 @@
 ---
 dependencies:
+  - { role: python_venv }
   - { role: neovim }
   - { role: vim_plug }
   - { role: my_vim }

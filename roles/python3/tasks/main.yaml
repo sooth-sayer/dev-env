@@ -28,6 +28,9 @@
   when: ansible_os_family == "Darwin"
   become: false
 
+- name: Install dev-env virtual env
+  shell: python3 -m venv "{{ ansible_env.HOME }}/python-dev-env"
+
 # - name: Upgrade pip
 #   shell: pip3 install -U pip
 #   when: ansible_os_family == "Darwin"

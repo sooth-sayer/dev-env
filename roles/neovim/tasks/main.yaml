@@ -1,7 +1,6 @@
 ---
-- name: python3 neovim (mac)
-  pip: name=neovim executable=pip
-  become: false
+- name: python3 pynvim (mac)
+  pip: name=pynvim virtualenv="{{ ansible_env.HOME }}/python-dev-env"
   when: ansible_os_family == "Darwin"
 
 - name: Install neovim (mac)

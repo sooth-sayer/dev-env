@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: oh_my_zsh }
+  - { role: python3 }
