@@ -25,7 +25,8 @@ let g:airline_theme='murmur'
 " Color scheme
 " colorscheme Tomorrow-Night-Bright
 set background=dark
-colorscheme solarized8_dark
+" colorscheme solarized8_dark
+colorscheme tokyonight-night
 
 " Syntax highlighting
 syntax on
