@@ -2,6 +2,9 @@
 - name: Create plugins directory
   file: path="{{ ansible_env.HOME }}/.vim/custom/plugins" state=directory
 
+- name: Create autocmds directory
+  file: path="{{ ansible_env.HOME }}/.vim/custom/autocmds" state=directory
+
 - name: Add coc plugins
   template: src="plugins/coc_plugins.vim" dest="{{ ansible_env.HOME }}/.vim/custom/plugins/coc_plugins.vim" mode=644
 
