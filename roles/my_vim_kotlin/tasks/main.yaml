@@ -1,23 +1,27 @@
 ---
+- name: Shared facts
+  include_role:
+    name: shared_facts
+
 - file: path="{{ ansible_env.HOME }}/dev/tools" state=directory
-
-- copy: src=get_java_version.sh dest=/tmp/get_java_version.sh mode=755
-- name: Get java major version
-  shell: /tmp/get_java_version.sh
-  register: get_java_version_output
-
-# - name: Install openjdk
-#   homebrew: name=openjdk@21 state=latest
-#   when: ansible_os_family == "Darwin"
-#   become: false
 
 - name: Download kotlin-language-sever
   git: repo=https://github.com/fwcd/kotlin-language-server.git dest="{{ ansible_env.HOME }}/dev/tools/kotlin-language-server" accept_hostkey=yes
 
+- name: Check if the target java version is installed
+  assert:
+    that:
+      - use_system_java or current_java_version is defined or installed_java_version is defined
+      - use_system_java or (current_java_version is defined and current_java_version == java_version or installed_java_version is defined and installed_java_version == java_version)
+    fail_msg: "Required java version {{ java_version }} is not installed. (current java version: {{ current_java_version }}, installed java version: {{ installed_java_version is defined | ternary(installed_java_version, 'not installed') }})"
+    success_msg: "The target java version is installed."
+
 - name: Build kotlin language server
   shell:
-    cmd: ./gradlew -PjavaVersion="{{ get_java_version_output.stdout_lines[0] }}" :server:installDist
+    cmd: ./gradlew -PjavaVersion="{{ use_system_java | ternary(current_java_version, java_version) }}" :server:installDist
     chdir: "{{ ansible_env.HOME }}/dev/tools/kotlin-language-server"
+  environment:
+    PATH: "{{ java_bin_path is defined | ternary(java_bin_path, '') }}:{{ ansible_env.PATH }}"
 
 - name: Create plugins directory
   file: path="{{ ansible_env.HOME }}/.vim/custom/plugins" state=directory

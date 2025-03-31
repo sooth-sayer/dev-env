@@ -1,0 +1,35 @@
+---
+- name: Shared facts
+  include_role:
+    name: shared_facts
+
+- name: Install jdk (mac os)
+  homebrew:
+    name: openjdk@{{ java_version }}
+    state: latest
+  when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java
+
+- name: Apply jdk to .profile (mac os)
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.profile"
+    create: true
+    marker: "# {mark} JDK install script"
+    insertafter: EOF
+    block: |
+      export PATH="$(brew --prefix openjdk@{{ java_version }})/bin:$PATH"
+  when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java
+
+- name: Get java path
+  shell: echo $(brew --prefix openjdk@{{ java_version }})/bin
+  register: java_bin_path_output
+  when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java
+
+- name: Set java path
+  set_fact:
+    java_bin_path: "{{ java_bin_path_output.stdout }}"
+  when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java
+
+- name: Set facts
+  set_fact:
+    installed_java_version: "{{ java_version }}"
+  when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java

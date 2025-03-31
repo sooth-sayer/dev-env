@@ -1,0 +1,16 @@
+---
+- copy: src=get_java_version.sh dest=/tmp/get_java_version.sh mode=755
+- name: Get java major version
+  shell: /tmp/get_java_version.sh
+  register: get_java_version_output
+
+- name: Set current_java_version
+  set_fact:
+    current_java_version: "{{ item }}"
+  # NOTE: This is a workaround for the fact that Ansible ignores type casting inside set_fact (i.e., current_java_version: "{{ get_java_version_output.stdout | int }}" does not work)
+  loop: "{{ [get_java_version_output.stdout | int] }}"
+  when: get_java_version_output is defined and get_java_version_output.stdout is defined
+
+- name: Set is target java version installed
+  set_fact:
+    is_target_java_version_installed: "{{ current_java_version == java_version }}"

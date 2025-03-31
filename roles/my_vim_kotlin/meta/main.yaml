@@ -1,5 +1,6 @@
 ---
 dependencies:
+  - { role: jdk }
   - { role: vim_plug }
   - { role: my_vim }
   - { role: my_vim_coc }
