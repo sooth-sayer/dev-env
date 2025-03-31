@@ -1,13 +1,22 @@
 ---
 - file: path="{{ ansible_env.HOME }}/dev/tools" state=directory
 
+- copy: src=get_java_version.sh dest=/tmp/get_java_version.sh mode=755
+- name: Get java major version
+  shell: /tmp/get_java_version.sh
+  register: get_java_version_output
+
+# - name: Install openjdk
+#   homebrew: name=openjdk@21 state=latest
+#   when: ansible_os_family == "Darwin"
+#   become: false
+
 - name: Download kotlin-language-sever
   git: repo=https://github.com/fwcd/kotlin-language-server.git dest="{{ ansible_env.HOME }}/dev/tools/kotlin-language-server" accept_hostkey=yes
 
-# TODO: Get the current java version
 - name: Build kotlin language server
   shell:
-    cmd: ./gradlew -PjavaVersion=17 :server:installDist
+    cmd: ./gradlew -PjavaVersion="{{ get_java_version_output.stdout_lines[0] }}" :server:installDist
     chdir: "{{ ansible_env.HOME }}/dev/tools/kotlin-language-server"
 
 - name: Create plugins directory
