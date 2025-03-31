@@ -28,6 +28,9 @@
   register: get_pipx_powerline_install_path
   when: ansible_os_family == "Darwin" and get_pipx_version.rc == 0
 
+- name: Include dot-profile
+  lineinfile: dest="{{ ansible_env.HOME }}/.zprofile" line="[[ -f ~/.profile ]] && source ~/.profile" state=present
+
 - name: Use oh-my-zsh plugins
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="plugins=(git)" state=present
 

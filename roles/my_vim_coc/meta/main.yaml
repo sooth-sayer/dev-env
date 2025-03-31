@@ -3,3 +3,4 @@ dependencies:
   - { role: neovim }
   - { role: vim_plug }
   - { role: my_vim }
+  - { role: nvm }
