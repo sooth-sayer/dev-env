@@ -1,6 +1,11 @@
 ---
 - name: python3 pynvim (mac)
-  pip: name=pynvim virtualenv="{{ ansible_env.HOME }}/python-dev-env"
+  # pip: name=pynvim virtualenv="{{ ansible_env.HOME }}/python-dev-env"
+  pip:
+    name: pynvim
+    state: latest
+    break_system_packages: true
+    extra_args: --user
   when: ansible_os_family == "Darwin"
 
 - name: Install neovim (mac)

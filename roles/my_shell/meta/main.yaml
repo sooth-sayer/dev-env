@@ -1,6 +1,5 @@
 ---
 dependencies:
-  - { role: python_venv }
   - { role: oh_my_zsh }
   - { role: powerline }
   - { role: git }
