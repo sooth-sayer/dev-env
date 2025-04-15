@@ -21,11 +21,11 @@
 - name: Add neovim apt repo (Ubuntu)
   shell: add-apt-repository ppa:neovim-ppa/unstable && apt-get update
   become: true
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu" and false
 
 - name: Install neovim (linux)
   apt: pkg=neovim state=latest
-  become: yes
+  become: true
   when: ansible_os_family == "Debian"
 
 - name: Install python3 neovim (linux)

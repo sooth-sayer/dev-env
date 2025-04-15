@@ -18,18 +18,21 @@
   ignore_errors: true
   register: get_pipx_version
 
-- name: Get python user base path (pipx)
+- name: Get powerline user base path (pipx)
   shell: /tmp/get_pipx_powerline_install_path.sh
-  register: get_pipx_powerline_install_path
-  when: ansible_os_family == "Debian" and get_pipx_version.rc == 0
+  register: get_pipx_powerline_install_path_result
+  when: get_pipx_version.rc == 0 and (ansible_os_family in ["Debian", "Darwin"])
 
-- name: Get python user base path (pipx) (darwin)
-  shell: /tmp/get_pipx_powerline_install_path.sh
-  register: get_pipx_powerline_install_path
-  when: ansible_os_family == "Darwin" and get_pipx_version.rc == 0
+- name: Set powerline base path
+  set_fact:
+    get_pipx_powerline_install_path: "{{ get_pipx_powerline_install_path_result.stdout }}"
+  when: get_pipx_version.rc == 0 and (ansible_os_family in ["Debian", "Darwin"])
 
 - name: Include dot-profile
-  lineinfile: dest="{{ ansible_env.HOME }}/.zprofile" line="[[ -f ~/.profile ]] && source ~/.profile" state=present
+  lineinfile: dest="{{ ansible_env.HOME }}/.zprofile" line="[[ -f $HOME/.profile ]] && source $HOME/.profile" state=present create=true
+
+- name: Include base .profile
+  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="[ -f $HOME/.profile ] && source $HOME/.profile" state=present
 
 - name: Use oh-my-zsh plugins
   lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line="plugins=(git)" state=present
@@ -49,7 +52,7 @@
   when: get_pipx_version.rc != 0
 
 - name: Use powerline-status (pipx)
-  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line=". {{ get_pipx_powerline_install_path.stdout_lines[0] }}/bindings/zsh/powerline.zsh"
+  lineinfile: dest="{{ ansible_env.HOME }}/.zshrc" line=". {{ get_pipx_powerline_install_path }}/bindings/zsh/powerline.zsh"
   when: get_pipx_version.rc == 0
 
 - name: Use vi mode

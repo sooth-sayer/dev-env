@@ -9,6 +9,11 @@
     state: latest
   when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java
 
+- name: Install jdk (Debian)
+  apt: pkg=openjdk-{{ java_version }}-jdk state=latest
+  become: true
+  when: ansible_os_family == "Debian" and not is_target_java_version_installed and not use_system_java
+
 - name: Apply jdk to .profile (mac os)
   blockinfile:
     path: "{{ ansible_env.HOME }}/.profile"
@@ -19,17 +24,33 @@
       export PATH="$(brew --prefix openjdk@{{ java_version }})/bin:$PATH"
   when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java
 
+- name: Apply jdk to .profile (Debian)
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.profile"
+    create: true
+    marker: "# {mark} JDK install script"
+    insertafter: EOF
+    block: |
+      export JAVA_BIN_PATH=$(update-java-alternatives --list | awk '$1 ~ /{{ java_version }}/ {print $3 "/bin"}')
+      export PATH="$JAVA_BIN_PATH:$PATH"
+  when: ansible_os_family == "Debian" and not is_target_java_version_installed and not use_system_java
+
 - name: Get java path
   shell: echo $(brew --prefix openjdk@{{ java_version }})/bin
-  register: java_bin_path_output
+  register: java_bin_path_output_darwin
   when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java
+
+- name: Get java path (Debian)
+  shell: echo $(update-java-alternatives --list | awk '$1 ~ /{{ java_version }}/ {print $3 "/bin"}')
+  register: java_bin_path_output_debian
+  when: ansible_os_family == "Debian" and not is_target_java_version_installed and not use_system_java
 
 - name: Set java path
   set_fact:
-    java_bin_path: "{{ java_bin_path_output.stdout }}"
-  when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java
+    java_bin_path: "{{ java_bin_path_output_darwin.stdout if ansible_os_family == 'Darwin' else java_bin_path_output_debian.stdout }}"
+  when: ansible_os_family in ["Darwin", "Debian"] and not is_target_java_version_installed and not use_system_java
 
 - name: Set facts
   set_fact:
     installed_java_version: "{{ java_version }}"
-  when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java
+  when: ansible_os_family in ["Darwin", "Debian"] and not is_target_java_version_installed and not use_system_java

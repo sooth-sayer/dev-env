@@ -14,3 +14,7 @@
 - name: Set is target java version installed
   set_fact:
     is_target_java_version_installed: "{{ current_java_version == java_version }}"
+
+- name: Set tmp_dir
+  set_fact:
+    tmp_dir: "{{ ansible_env.TMPDIR | default('/tmp') }}"
