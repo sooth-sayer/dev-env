@@ -1,0 +1,3 @@
+---
+- name: Include brew shell env
+  lineinfile: dest="{{ ansible_env.HOME }}/.zprofile" line="eval $(brew shellenv)" state=present create=true
