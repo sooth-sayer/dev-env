@@ -7,6 +7,18 @@
   - template: src="settings_after.vim" dest="{{ ansible_env.HOME }}/.vim/custom/settings_after.vim" mode=644
   - template: src="settings_before.vim" dest="{{ ansible_env.HOME }}/.vim/custom/settings_before.vim" mode=644
   - template: src="file_types.vim" dest="{{ ansible_env.HOME }}/.vim/custom/file_types.vim" mode=644
+  - name: Get iterm2 current theme os script
+    template:
+      src: "iterm_theme.scpt"
+      dest: "{{ ansible_env.HOME }}/.local/bin/iterm_theme.scpt"
+      mode: '0755'
+    when: ansible_facts['os_family'] == 'Darwin'
+  - name: Get iterm2 current theme sh script
+    template:
+      src: "iterm_theme"
+      dest: "{{ ansible_env.HOME }}/.local/bin/iterm_theme"
+      mode: '0755'
+    when: ansible_facts['os_family'] == 'Darwin'
 
   - file: path="{{ ansible_env.HOME }}/.vim/custom/plugins" state=directory
   - file: path="{{ ansible_env.HOME }}/.vim/custom/mappings" state=directory

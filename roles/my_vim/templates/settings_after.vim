@@ -28,6 +28,8 @@ set background=dark
 " colorscheme solarized8_dark
 colorscheme tokyonight-night
 
+call SyncThemeWithEnv('gruvbox', 'Atelier_DuneDark', 'kalisi', 'murmur')
+
 " Syntax highlighting
 syntax on
 
