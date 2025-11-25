@@ -24,6 +24,16 @@
       export PATH="$(brew --prefix openjdk@{{ java_version }})/bin:$PATH"
   when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java
 
+- name: Apply JAVA_HOME to .profile (mac os)
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.profile"
+    create: true
+    marker: "# {mark} Set JDK JAVA_HOME"
+    insertafter: EOF
+    block: |
+      export JAVA_HOME="$(brew --prefix openjdk@{{ java_version }})/libexec/openjdk.jdk/Contents/Home"
+  when: ansible_os_family == "Darwin" and not is_target_java_version_installed and not use_system_java
+
 - name: Apply jdk to .profile (Debian)
   blockinfile:
     path: "{{ ansible_env.HOME }}/.profile"
@@ -33,6 +43,16 @@
     block: |
       export JAVA_BIN_PATH=$(update-java-alternatives --list | awk '$1 ~ /{{ java_version }}/ {print $3 "/bin"}')
       export PATH="$JAVA_BIN_PATH:$PATH"
+  when: ansible_os_family == "Debian" and not is_target_java_version_installed and not use_system_java
+
+- name: Apply JAVA_HOME to .profile (Debian)
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.profile"
+    create: true
+    marker: "# {mark} Set JDK JAVA_HOME"
+    insertafter: EOF
+    block: |
+      export JAVA_HOME="$(update-java-alternatives --list | awk '$1 ~ /{{ java_version }}/ {print $3}')"
   when: ansible_os_family == "Debian" and not is_target_java_version_installed and not use_system_java
 
 - name: Get java path
