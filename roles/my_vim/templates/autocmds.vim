@@ -41,11 +41,6 @@ autocmd FileType ruby setlocal foldmethod=syntax
 autocmd! BufWritePost *.rb Neomake
 autocmd! BufWritePost *.rake Neomake
 
-autocmd FileType c :call deoplete#enable()
-autocmd FileType cpp :call deoplete#enable()
-autocmd FileType hpp :call deoplete#enable()
-autocmd FileType h :call deoplete#enable()
-
 augroup autos
   au!
   au CursorHold * nested call SaveIfChanged()
