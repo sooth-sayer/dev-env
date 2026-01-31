@@ -19,6 +19,9 @@ function! s:SetupCocMapping(ft) abort
   " Show diagnostics
   nmap <silent> <leader>dl :CocDiagnostics<CR>
 
+  " Copy diagnostic text to selected register
+  nnoremap <silent> <expr> <leader>cdy <SID>CocCopyFloatOp()
+
   " Use <leader>D to show documentation in preview window.
   nnoremap <silent> <leader>fd :call <SID>show_documentation('float')<CR>
   nnoremap <silent> <leader>pd :call <SID>show_documentation('preview')<CR>
@@ -57,6 +60,22 @@ endfunction
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+function! s:CopyCurrentDiagnosticText(reg) abort
+  echo 'Copying diagnostic text to register: ' . a:reg
+  let l:wins = coc#float#get_float_win_list()
+  if empty(l:wins) | let @+ = '' | return | endif
+  let l:b = winbufnr(l:wins[-1])
+  let l:text = join(getbufline(l:b, 1, '$'), "\n")
+
+  call setreg(a:reg, l:text, 'V')
+endfunction
+
+function! s:CocCopyFloatOp() abort
+  let l:reg = empty(v:register) ? '"' : v:register
+
+  return ':call ' . expand('<SID>') . 'CopyCurrentDiagnosticText' . '(' . string(l:reg) . ')' . "\<CR>"
 endfunction
 
 augroup CocMapping
